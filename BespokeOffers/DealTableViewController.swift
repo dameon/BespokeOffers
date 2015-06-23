@@ -12,7 +12,9 @@ class DealTableViewController: UITableViewController, NSURLConnectionDelegate {
 
     //MARK: Properties
     var deals = [Deal]()
+     var selectedDeal = Deal()
     
+    //MARK: Methods
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,35 +40,56 @@ class DealTableViewController: UITableViewController, NSURLConnectionDelegate {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cellIdentifier = "DealTableViewCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier("cellIdentifier", forIndexPath: indexPath) as! DealTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("DealTableViewCell", forIndexPath: indexPath) as! DealTableViewCell
         
         let deal = deals[indexPath.row]
         
-        //cell.detailTextLabel = deal.name
-        //cell.dealImageView = deal.photo
-
+        cell.dealLabel?.text = deal.name
+        
+        let url = NSURL (string: deal.photoURL!)
+        let imageData = NSData(contentsOfURL: url!)
+        cell.dealImageView.image = UIImage(data: imageData!)
+        
         return cell
     }
     
-    func getDeals(){
-        var dict: NSDictionary!
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let task = NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: "https://www.bespokeoffers.co.uk/mobile-api/v2/offers.json?page_size=10&page=1")!, completionHandler: { (data, response, error) -> Void in
-            
-            dict = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as? NSDictionary
-            //print(dict, appendNewline: false)
-            
-            if let offers = dict["offers"] as?NSArray {
-                for offer in offers {
-                  print(offer)
-                }
-            }
-        
-        })
-        task!.resume()
+        selectedDeal = deals[indexPath.row]
+        performSegueWithIdentifier("detailsSegue", sender: self)
+        //let dvc = detailViewController
+        //self.navigationController?.pushViewController("DealDetailController, animated: true)
     }
     
+    func getDeals(){
+        let bespokeURL = NSURL(string: "https://www.bespokeoffers.co.uk/mobile-api/v2/offers.json?page_size=10&page=1")
+        
+        // 2
+        
+        if let JSONData = NSData(contentsOfURL: bespokeURL!) {
+            
+            // 3
+            
+            if let json = try! NSJSONSerialization.JSONObjectWithData(JSONData, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary {
+                
+                // 4
+                
+                if let offersArray = json["offers"] as? [NSDictionary] {
+    
+                    // 5
+                    for offer in offersArray {
+                        
+                        //print(offer)
+                        let tempDeal = Deal()
+                        tempDeal.name = (offer.objectForKey("title") as! String)
+                        tempDeal.photos = (offer.objectForKey("images") as! NSMutableArray)
+                        tempDeal.photoURL = tempDeal.photos?[0] as! String
+                        deals.append(tempDeal)
+                    }
+                }
+            }
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -103,14 +126,19 @@ class DealTableViewController: UITableViewController, NSURLConnectionDelegate {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "detailsSegue"
+        {
+            if let dvc = segue.destinationViewController as? DetailViewController {
+                dvc.pickedDeal = selectedDeal
+            }
+        }
     }
-    */
+
 
 }

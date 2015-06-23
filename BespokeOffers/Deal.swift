@@ -10,29 +10,10 @@ import UIKit
 
 class Deal: NSObject {
     
-    //MARK: Types
-    
-    struct PropertyKey {
-        
-        static let nameKey = "name"
-        static let photoKey = "photo"
-    }
-    
     //MARK: Properties
     
-    var name: String
-    var photo: UIImage
-    
-    init? (name: String, photo: UIImage?)
-    {
-        self.name = name
-        self.photo = photo!
-        
-        super.init()
-        
-        if name.isEmpty {
-            return nil
-        }
-    }
+    var name: String?
+    var photos: NSMutableArray?
+    var photoURL: String?
 
 }
