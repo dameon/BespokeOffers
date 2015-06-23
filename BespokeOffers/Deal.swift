@@ -15,5 +15,8 @@ class Deal: NSObject {
     var name: String?
     var photos: NSMutableArray?
     var photoURL: String?
+    var dealDescription: String?
+    var endDate: String?
+    var priceDisplay: String?
 
 }

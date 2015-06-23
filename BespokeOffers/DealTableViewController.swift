@@ -11,13 +11,14 @@ import UIKit
 class DealTableViewController: UITableViewController, NSURLConnectionDelegate {
 
     //MARK: Properties
+    static let bespokeURL = NSURL(string: "https://www.bespokeoffers.co.uk/mobile-api/v2/offers.json?page_size=10&page=1")
     var deals = [Deal]()
-     var selectedDeal = Deal()
+    var selectedDeal = Deal()
     
     //MARK: Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.title = "Bespoke App"
         getDeals()
     }
     
@@ -57,26 +58,17 @@ class DealTableViewController: UITableViewController, NSURLConnectionDelegate {
         
         selectedDeal = deals[indexPath.row]
         performSegueWithIdentifier("detailsSegue", sender: self)
-        //let dvc = detailViewController
-        //self.navigationController?.pushViewController("DealDetailController, animated: true)
     }
     
     func getDeals(){
         let bespokeURL = NSURL(string: "https://www.bespokeoffers.co.uk/mobile-api/v2/offers.json?page_size=10&page=1")
         
-        // 2
-        
         if let JSONData = NSData(contentsOfURL: bespokeURL!) {
-            
-            // 3
             
             if let json = try! NSJSONSerialization.JSONObjectWithData(JSONData, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary {
                 
-                // 4
-                
                 if let offersArray = json["offers"] as? [NSDictionary] {
-    
-                    // 5
+
                     for offer in offersArray {
                         
                         //print(offer)
@@ -84,6 +76,9 @@ class DealTableViewController: UITableViewController, NSURLConnectionDelegate {
                         tempDeal.name = (offer.objectForKey("title") as! String)
                         tempDeal.photos = (offer.objectForKey("images") as! NSMutableArray)
                         tempDeal.photoURL = tempDeal.photos?[0] as! String
+                        tempDeal.dealDescription = (offer.objectForKey("description") as! String)
+                        tempDeal.endDate = (offer.objectForKey("end_date") as! String)
+                        tempDeal.priceDisplay = (offer.objectForKey("price_display") as! String)
                         deals.append(tempDeal)
                     }
                 }
@@ -135,7 +130,7 @@ class DealTableViewController: UITableViewController, NSURLConnectionDelegate {
         if segue.identifier == "detailsSegue"
         {
             if let dvc = segue.destinationViewController as? DetailViewController {
-                dvc.pickedDeal = selectedDeal
+                dvc.dealSelected = selectedDeal
             }
         }
     }

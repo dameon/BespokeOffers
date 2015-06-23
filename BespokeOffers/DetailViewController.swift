@@ -12,7 +12,12 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var dealTitleLabel: UILabel!
     @IBOutlet weak var dealImageView: UIImageView!
-    var pickedDeal = Deal()
+  
+    @IBOutlet weak var dealDescTextView: UITextView!
+    @IBOutlet weak var dealPriceLabel: UILabel!
+    @IBOutlet weak var dealLimit: UILabel!
+    
+    var dealSelected = Deal()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,11 +31,18 @@ class DetailViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         
-        dealTitleLabel.text = pickedDeal.name
-        //dealImageView.image = pickedDeal.photo[0] as! UIImage
-        
+        getCurrentDeal()
     }
-
+    
+    func getCurrentDeal(){
+        self.title = dealSelected.name
+        let url = NSURL (string: dealSelected.photoURL!)
+        let imageData = NSData(contentsOfURL: url!)
+        dealImageView.image = UIImage(data: imageData!)
+        
+        dealDescTextView.text = dealSelected.dealDescription
+        //dealPriceLabel.text = dealSelected.priceDisplay
+    }
 
 }
 
