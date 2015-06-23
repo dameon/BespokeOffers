@@ -8,17 +8,17 @@
 
 import UIKit
 
-class DealTableViewController: UITableViewController, NSURLConnectionDelegate {
+class DealTableViewController: UITableViewController{
 
     //MARK: Properties
-    static let bespokeURL = NSURL(string: "https://www.bespokeoffers.co.uk/mobile-api/v2/offers.json?page_size=10&page=1")
+    let bespokeURL = NSURL(string: "https://www.bespokeoffers.co.uk/mobile-api/v2/offers.json?page_size=10&page=1")
     var deals = [Deal]()
     var selectedDeal = Deal()
     
     //MARK: Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Bespoke App"
+        self.title = "Bespoke"
         getDeals()
     }
     
@@ -29,7 +29,6 @@ class DealTableViewController: UITableViewController, NSURLConnectionDelegate {
     }
 
     // MARK: - Table view data source
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -44,9 +43,9 @@ class DealTableViewController: UITableViewController, NSURLConnectionDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier("DealTableViewCell", forIndexPath: indexPath) as! DealTableViewCell
         
         let deal = deals[indexPath.row]
-        
         cell.dealLabel?.text = deal.name
         
+        //TODO write helper class to replace ugly way of displaying image via url
         let url = NSURL (string: deal.photoURL!)
         let imageData = NSData(contentsOfURL: url!)
         cell.dealImageView.image = UIImage(data: imageData!)
@@ -60,9 +59,8 @@ class DealTableViewController: UITableViewController, NSURLConnectionDelegate {
         performSegueWithIdentifier("detailsSegue", sender: self)
     }
     
+    //MARK Deals Request
     func getDeals(){
-        let bespokeURL = NSURL(string: "https://www.bespokeoffers.co.uk/mobile-api/v2/offers.json?page_size=10&page=1")
-        
         if let JSONData = NSData(contentsOfURL: bespokeURL!) {
             
             if let json = try! NSJSONSerialization.JSONObjectWithData(JSONData, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary {
@@ -123,7 +121,6 @@ class DealTableViewController: UITableViewController, NSURLConnectionDelegate {
 
     
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         

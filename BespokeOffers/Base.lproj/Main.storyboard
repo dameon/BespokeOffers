@@ -22,33 +22,77 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="215"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e91-Zm-RlN">
-                                <rect key="frame" x="6" y="282" width="588" height="310"/>
+                                <rect key="frame" x="6" y="346" width="588" height="246"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" staticText="YES"/>
                                 </accessibility>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="310" id="dPS-0J-lIU"/>
+                                    <constraint firstAttribute="height" constant="246" id="dPS-0J-lIU"/>
                                 </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jgu-Z8-gsN">
+                                <rect key="frame" x="41" y="317" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sm2-EV-moD">
+                                <rect key="frame" x="496" y="317" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deal Ends" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMR-01-8Ji">
+                                <rect key="frame" x="461" y="289" width="77" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4g-yc-sxQ">
+                                <rect key="frame" x="41" y="289" width="59" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="TMR-01-8Ji" firstAttribute="top" secondItem="JQe-1E-81H" secondAttribute="bottom" constant="10" id="0pV-Wo-jeG"/>
+                            <constraint firstItem="e91-Zm-RlN" firstAttribute="top" secondItem="F4g-yc-sxQ" secondAttribute="bottom" constant="36" id="2Wy-My-f3b"/>
+                            <constraint firstItem="Jgu-Z8-gsN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="21" id="3nR-RW-fCq"/>
                             <constraint firstItem="e91-Zm-RlN" firstAttribute="centerX" secondItem="JQe-1E-81H" secondAttribute="centerX" id="4Jz-jh-NOM"/>
                             <constraint firstItem="e91-Zm-RlN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5Le-Lu-UlK"/>
-                            <constraint firstItem="e91-Zm-RlN" firstAttribute="top" secondItem="JQe-1E-81H" secondAttribute="bottom" constant="3" id="KW0-0G-s3M"/>
+                            <constraint firstItem="e91-Zm-RlN" firstAttribute="top" secondItem="Jgu-Z8-gsN" secondAttribute="bottom" constant="8" id="6UB-Jh-5aV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TMR-01-8Ji" secondAttribute="trailing" constant="42" id="DOm-kt-hXD"/>
+                            <constraint firstItem="e91-Zm-RlN" firstAttribute="top" secondItem="JQe-1E-81H" secondAttribute="bottom" constant="67" id="KW0-0G-s3M"/>
+                            <constraint firstItem="F4g-yc-sxQ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="KqN-wn-Fiy"/>
+                            <constraint firstItem="sm2-EV-moD" firstAttribute="top" secondItem="JQe-1E-81H" secondAttribute="bottom" constant="38" id="Muv-2Q-oCq"/>
                             <constraint firstItem="JQe-1E-81H" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Nro-sa-fq4"/>
+                            <constraint firstItem="Jgu-Z8-gsN" firstAttribute="top" secondItem="JQe-1E-81H" secondAttribute="bottom" constant="38" id="T1V-i7-1rZ"/>
                             <constraint firstItem="JQe-1E-81H" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Ujg-Aj-7ss"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="e91-Zm-RlN" secondAttribute="bottom" constant="8" symbolic="YES" id="bCC-0u-UZC"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="e91-Zm-RlN" secondAttribute="bottom" constant="8" id="bCC-0u-UZC"/>
+                            <constraint firstItem="F4g-yc-sxQ" firstAttribute="top" secondItem="JQe-1E-81H" secondAttribute="bottom" constant="10" id="j6H-fI-xPH"/>
+                            <constraint firstItem="F4g-yc-sxQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="21" id="jc4-C0-1r6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sm2-EV-moD" secondAttribute="trailing" constant="42" id="oel-Go-QcT"/>
+                            <constraint firstItem="e91-Zm-RlN" firstAttribute="top" secondItem="sm2-EV-moD" secondAttribute="bottom" constant="8" id="s3L-6c-LdF"/>
                             <constraint firstItem="e91-Zm-RlN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-14" id="sH6-tQ-1v6"/>
+                            <constraint firstItem="e91-Zm-RlN" firstAttribute="top" secondItem="TMR-01-8Ji" secondAttribute="bottom" constant="36" id="ub3-gC-wjj"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="KqN-wn-Fiy"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="dealDescTextView" destination="e91-Zm-RlN" id="6w6-bw-Kr6"/>
+                        <outlet property="dealEndDate" destination="sm2-EV-moD" id="C7k-Vg-b5e"/>
                         <outlet property="dealImageView" destination="JQe-1E-81H" id="c0p-Mm-pfZ"/>
+                        <outlet property="dealPriceLabel" destination="Jgu-Z8-gsN" id="mJr-1i-Pwc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -11,12 +11,10 @@ import UIKit
 class Deal: NSObject {
     
     //MARK: Properties
-    
     var name: String?
     var photos: NSMutableArray?
     var photoURL: String?
     var dealDescription: String?
     var endDate: String?
     var priceDisplay: String?
-
 }

@@ -10,11 +10,11 @@ import UIKit
 
 class DealTableViewCell: UITableViewCell {
 
-    // MARK: Properties
-    
+    //MARK: Properties
     @IBOutlet weak var dealLabel: UILabel!
     @IBOutlet weak var dealImageView: UIImageView!
     
+    //MARK: Methods
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
